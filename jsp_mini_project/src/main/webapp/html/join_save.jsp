@@ -18,10 +18,21 @@
 	String password = request.getParameter("password");
 	String email = request.getParameter("email");
 	String nickname = request.getParameter("nickname");
+	String  addr1= request.getParameter("postAddr1");
+	String  addr2= request.getParameter("postAddr2");
+	String  addr3= request.getParameter("postAddr3");
+	String addr = addr1+" "+addr2+" "+addr3;
+	
+	String  areaCode = request.getParameter("areaCode");
+	String  firstPart= request.getParameter("firstPart");
+	String  secondPart= request.getParameter("secondPart");
+	
+	String phoneNumber = areaCode + firstPart + secondPart;
+	
 
 	// year, month, day를 합쳐서 birth_date 생성
 	String birthDate = year + "-" + month + "-" + day;
-	 String sql = "INSERT INTO ES_USER (user_name, birth_date, gender, user_id, PWD, email, nickname) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	 String sql = "INSERT INTO ES_USER (user_name, birth_date, gender, user_id, PWD, email, nickname, addr, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	 PreparedStatement pstmt = conn.prepareStatement(sql);
 	 pstmt.setString(1, userName);
 	 pstmt.setString(2, birthDate);
@@ -30,12 +41,14 @@
 	 pstmt.setString(5, password);
      pstmt.setString(6, email);
      pstmt.setString(7, nickname);
+     pstmt.setString(8, addr);
+     pstmt.setString(9, phoneNumber);
      pstmt.executeQuery();
-	
-	
+
 	%>
+	
 	<div>
-	저장완료
+	
 	</div>
 </body>
 </html>

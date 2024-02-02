@@ -1,36 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
         @font-face {
-    font-family: 'HOHO';
-    src: url('SDSamliphopangcheBasic.otf') format('truetype');
-}
-        hader {
+            font-family: 'HOHO';
+            src: url('SDSamliphopangcheBasic.otf') format('truetype');
+        }
+      
+        #header {
             width: 100%;
             height: 100px;
-            background-color: rgba(219, 219, 219);
-            position: fixed;
+            background-color: rgba(219, 219, 219,0.1);
+            position: absolute;
             top: 0;
             left: 0;
-            border-bottom:1px solid black;
-
+            display:block;
+            color : #fff;
+            z-index: 999;
         }
 
         #hader-top {
             width: 1000px;
             height: 40px;
-            
             margin: 0 auto;
             position: relative;
-
-
-
-
         }
 
         .join a {
@@ -48,28 +46,25 @@
 
         #hader-top .join {
             position: absolute;
-            top:10px;
+            top: 10px;
             right: 0px;
         }
         #hader-top a:hover{
-            background-color: rgb(219, 219, 219);
+            background-color: rgba(219, 219, 219,0.1);
         }
 
         #hader-bottom {
             width: 1000px;
             height: 60px;
-            
             margin: 0 auto;
             line-height: 60px;
             position: relative;
-            
         }
         #hader-bottom a{
             text-decoration: none;
-            color: #333333;
+           
             font-family: 'hoho';
             font-size: 30px;
-           
         }
         #line{
             border-right: 1px solid;
@@ -77,15 +72,14 @@
             height: 20px;
             position: absolute;
             right: 81px;
-            top:0px
+            top: 0px
         }
         #logo{
             font-family: 'HOHO';
             font-size: 35px;
             margin-left: 30px;
-            color: #1e644d;
-            cursor: pointer;
             
+            cursor: pointer;
             display: inline-block;
         }
         ul{
@@ -93,10 +87,8 @@
             top: 0;
             margin: 0;
             right: 0;
-
         }
         li {
-            /* display: inline-block; */
             width: 150px;
             height: 60px;  
             text-align: center;      
@@ -105,15 +97,15 @@
             float: left;
             list-style: none;
         }
-        #hader-bottom{
-            display:block;
+        .hader-bottom{
+            display: block;
         }
         a:link, a:visited {
-            color:black;
+            color: #fff;
             text-decoration: none;
         }
         .menu, .sub-menu{
-            background-color: rgb(219, 219, 219);
+            background-color: rgba(219, 219, 219,0.1);
             width: 150px;
             box-shadow: 1px 3px 8px 3px #e7e3e3;
             display: none;
@@ -122,7 +114,6 @@
             display: block;
             padding : 10px;
             cursor: pointer;
-            
         }
         .sub-top-menu {
             position: relative;
@@ -146,39 +137,43 @@
         #hader-top a:hover{
             background-color: #ccc;
             transition: 700ms;
-            transform: ;
         }
         
-       #haderbox{
-       	width: 100%;
-       	height: 100px;
-       }
-        
-        
+        #haderbox{
+            width: 100%;
+            height: 100px;
+        }
     </style>
 </head>
-    <hader>
+<body>
+    <div id="header">
         <div id="hader-top">
             <div class="join">
-             <a href="login.jsp">로그인</a>
-                <div id="line"></div>
-             <a href="join.jsp">회원가입</a>
+                <!-- 세션에 아이디가 없을 때 -->
+                <% if(session.getAttribute("userId") == null) { %>
+                    <a href="login.jsp">로그인</a>
+                    <div id="line"></div>
+                    <a href="join.jsp">회원가입</a>
+                <% } else { %>
+                    <!-- 세션에 아이디가 있을 때 -->
+                    <% out.print("<a href='userInfo.jsp'>"+session.getAttribute("nickname")+"</a>님 환영합니다");%>
+                    <a href="logoutProcess.jsp">로그아웃</a>
+                <% } %>
             </div>
-
         </div>
         <div id="hader-bottom">
-            <div id="logo"><a href="main.jsp">LoGo들어갈자리</a></div>
+            <div id="logo"><a href="main.jsp">고객관리(❁´◡`❁)</a></div>
             <ul>
                 <li class="top-menu">
                     <a href="#">주문관리</a>
                     <div class="menu">
                         <div class="sub-top-menu">
-                        <a>Menu 1</a>
-                        <div class="sub-menu">
-                            <a>Sub 1</a>
-                            <a>Sub 2</a>
+                            <a>Menu 1</a>
+                            <div class="sub-menu">
+                                <a>Sub 1</a>
+                                <a>Sub 2</a>
+                            </div>
                         </div>
-                    </div>
                         <div class="sub-top-menu">
                             <a>Menu 2</a>
                             <div class="sub-menu">
@@ -214,7 +209,7 @@
                     </div>
                 </li>
                 <li class="top-menu">
-                    <a href="#">메뉴4</a>
+                    <a href="#">회원관리</a>
                     <div class="menu">
                         <a>Menu 1</a>
                         <a>Menu 2</a>
@@ -223,35 +218,18 @@
                 </li>
             </ul>
         </div>
-         
-    </hader>
-    <body>
-    <div id="haderbox"></div>
-    </body>
-</html>
+    </div>
+</body>
 <script>
-$(function(){
-    $("body").on('mousewheel',function(e){ 
-              var wheel = e.originalEvent.wheelDelta; 
-
-
-              if(wheel>0){ 
-                
-                
-                $("hader").slideDown(600);
-           
-                   
-            
-              } else { 
-                
-                $("hader").slideUp(600);
-                  } 
-         
-            });
-
-
-})
-
-
-
+    jQuery(function(){
+        jQuery("body").on('mousewheel',function(e){ 
+            var wheel = e.originalEvent.wheelDelta; 
+            if(wheel > 0) { 
+                jQuery("#header").slideDown(600);
+            } else { 
+                jQuery("#header").slideUp(600);
+            } 
+        });
+    });
 </script>
+</html>

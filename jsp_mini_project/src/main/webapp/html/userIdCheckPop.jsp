@@ -18,9 +18,9 @@
 		<input type="button" value="중복체크" onclick="IdCheck()">
 		</div>
 	<%}else{
-		out.print("중복이 아니에요");%>
+		out.print("중복이 아니에요<br>");%>
 		
-		<input type="button" onclick="popClose('<%= userId %>')" value="닫기">
+		<input type="button" onclick="popClose('<%= userId %>')" value="사용하기">
 	<%}
 
 
@@ -30,6 +30,8 @@
 <script>
 function popClose(userId) {
 	opener.document.getElementById('userId').value = userId;
+	opener.document.getElementById('idCheck').value = true;
+	opener.document.getElementById('userId').disabled = true;
 	window.close();
 }
 	
