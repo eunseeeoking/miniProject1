@@ -49,30 +49,10 @@
             }
         %>
         <!-- 내용을 추가하려면 이곳에 내용을 입력하세요. -->
-        홈페이지 내용을 이곳에 추가하세요.
+      	그냥 간단하게 고객 관리가 가능한 홈페이지를 만들어봤어요
     </div>
 
     <!-- jQuery 1.12.4 버전 사용 -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            // Logout 버튼 클릭 시 세션 삭제
-            $("#logoutButton").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "logoutProcess.jsp",
-                    success: function(response) {
-                        if (response.trim() === "success") {
-                            alert("로그아웃 성공!");
-                            window.location.replace("login.jsp");
-                        } else {
-                            alert("로그아웃 실패!");
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    
 </body>
 </html>

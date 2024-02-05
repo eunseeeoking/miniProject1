@@ -80,7 +80,7 @@
     </select>
     <br>
 
-    <label for="title">제목:</label>
+    <label for="title">	제목:</label>
     <input type="text" id="title" name="title" required>
     <br>
 

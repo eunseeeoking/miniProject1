@@ -11,6 +11,9 @@
             font-family: 'HOHO';
             src: url('SDSamliphopangcheBasic.otf') format('truetype');
         }
+        *{
+        font-family: 'hoho';
+        }
       
         #header {
             width: 100%;
@@ -71,7 +74,7 @@
             width: 0.01px;
             height: 20px;
             position: absolute;
-            right: 81px;
+            right: 67px;
             top: 0px
         }
         #logo{
@@ -163,7 +166,7 @@
             </div>
         </div>
         <div id="hader-bottom">
-            <div id="logo"><a href="main.jsp">고객관리(❁´◡`❁)</a></div>
+            <div id="logo"><a href="main.jsp">customer care WEB😋 </a></div>
             <ul>
                 <li class="top-menu">
                     <a href="#">주문관리</a>
@@ -207,6 +210,8 @@
         if(user_type != null && user_type.equals("U") || user_type != null && user_type.equals("A")) {
     %>
     <a href="user_service.jsp" onclick="return checkUserType()">고객센터</a>
+    <div class="menu">
+        <a href="user_service_write.jsp" onclick="return checkUserType()">문의 남기기</a>
     <script>
         function checkUserType() {
             var user_type = '<%= user_type %>';
@@ -221,9 +226,10 @@
     </script>
     <% } else { %>
     <a href="#" onclick="alert('로그인 후 열람 가능합니다.');">고객센터</a>
-    <% } %>
     <div class="menu">
-        <a>Menu 1</a>
+        <a href="#" onclick="alert('로그인 후 작성 가능합니다.')">문의 남기기</a>
+    <% } %>
+    
         <a>Menu 2</a>
         <a>Menu 3</a>
     </div>

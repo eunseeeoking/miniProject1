@@ -7,6 +7,13 @@
     <title>User Information Set</title>
     <!-- 필요한 경우 추가적인 스타일이나 스크립트를 여기에 포함시킬 수 있습니다. -->
     <style>
+    @font-face {
+            font-family: 'HOHO';
+            src: url('SDSamliphopangcheBasic.otf') format('truetype');
+        }
+        *{
+        font-family: 'hoho';
+        }
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;

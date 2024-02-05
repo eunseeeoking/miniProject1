@@ -41,7 +41,7 @@ pstmt.setString(6, userId);
  int result = pstmt.executeUpdate();
 
 if (result > 0) {
-    out.println("<script>alert('회원 정보가 업데이트되었습니다.'); location.href='your_update_success_page.jsp';</script>");
+    out.println("<script>alert('회원 정보가 업데이트되었습니다.'); location.href='UserBoard.jsp';</script>");
 } else {
     out.println("<script>alert('회원 정보 업데이트에 실패했습니다.'); history.go(-1);</script>");
 } 

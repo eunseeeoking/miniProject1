@@ -50,7 +50,7 @@
 
         th {
             background-color: #4285f4;
-            color: #fff;
+            color: black;
             text-align: center;
         }
 
@@ -60,7 +60,7 @@
 	
 		
         #title {
-            color: black;
+            color: green;
             text-decoration: none;
         }
 
@@ -92,7 +92,7 @@
 <jsp:include page="hader.jsp" flush="true"></jsp:include>
 
     <div id="headerbox"></div>
-    <h2>게시판</h2>
+    <h2>문의 목록</h2>
     
     <!-- 글쓰기 버튼을 input type=button으로 변경 -->
     <div class="filter-buttons">
@@ -120,7 +120,9 @@
                 <th>제목</th>
                 <th>작성일</th>
                 <th>처리상태</th>
+                <%if (user_type.equals("A")){ %>
                 <th>조작</th> <!-- 버튼을 위한 열 추가 -->
+                <%}%>
             </tr>
         </thead>
         <tbody>
@@ -140,19 +142,27 @@
         <td><%= postId %></td>
         <td><%= writer %></td>
         <td><%= inquiryType %></td>
-        <td><a id="title" href="user_service_detail.jsp?postId=<%= postId %>"><%= title %></a></td>
+        <td>
+        <% if (status.equals("처리전")) { %>
+        <a id="title" href="user_service_detail.jsp?postId=<%= postId %>"><%= title %></a>
+    <% } else { %>
+        <a id="title" href="user_service_detail.jsp?postId=<%= postId %>" style="color: red; text-decoration: line-through;"><%= title %></a>
+    <% } %>
+        </td>
         <td><%= createDate %></td>
         <td><%= status %></td>
-        <td>
+        
             <%
                 // 사용자 유형이 'A'이면서 게시글 상태가 '처리전'일 때 버튼 표시
                 if (user_type.equals("A") && status.equals("처리전")) {
             %>
+            <td>
             <input type="button" value="처리 완료" onclick="updateStatus('<%= postId %>')">
+            </td> 
             <%
                 }
             %>
-        </td>
+       
     </tr>
             <%
                 }

@@ -21,6 +21,7 @@
 	String addr1 = request.getParameter("postAddr1");
 	String addr2 = request.getParameter("postAddr2");
 	String addr3 = request.getParameter("postAddr3");
+	addr3 = (addr3 == null) ? "" : addr3;
 	String addr = addr1 + " " + addr2 + " " + addr3;
 
 	String areaCode = request.getParameter("areaCode");

@@ -111,15 +111,17 @@
         <thead>
             <tr>
             <th class="checkbox-column"><input type="checkbox" id="selectAll" onclick="selectAllCheckboxes()"></th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Birth Date</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Nickname</th>
-                <th>Address</th>
-                <th>Phone</th>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>생년 월 일</th>
+                <th>성별</th>
+                <th>이메일</th>
+                <th>닉네임</th>
+                <th>주소</th>
+                <th>휴대폰번호</th>
+                <th>로그인 실패</th>
                 <th>상세보기</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -142,7 +144,7 @@
                     String nickname = rs.getString("NICKNAME");
                     String address = rs.getString("ADDR");
                     String phone = rs.getString("PHONE");
-
+					String failcnt = rs.getString("failcnt");
                     // 행 번호 증가
                     rowNumber++;
             %>
@@ -158,6 +160,7 @@
                 <td><%= nickname %></td>
                 <td><%= address %></td>
                 <td><%= phone %></td>
+                <td><%= failcnt %><input value="초기화" type="button" onclick="failreset('<%=userId%>')"></td>
                 <td style="text-align: center;"><input type="button" class="view-details-button" value="유저 정보" onclick="viewDetails('<%= userId %>')"></td>
             </tr>
 
@@ -211,6 +214,9 @@ function deleteSelectedUsers() {
         // 폼 제출
         document.getElementById('deleteForm').submit();
     }
+}
+function failreset(userId) {
+	window.location.href="failcntreset.jsp?userId="+userId;
 }
 
 function getSelectedUserIds() {
