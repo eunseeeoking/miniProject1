@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/db/dbconn.jsp=UTF-8
+encoding//src/main/webapp/html/UserBoard.jsp=UTF-8
 encoding//src/main/webapp/html/ajax.jsp=UTF-8
 encoding//src/main/webapp/html/login.jsp=UTF-8
 encoding//src/main/webapp/html/updateUserInfo.jsp=UTF-8

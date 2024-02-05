@@ -146,6 +146,7 @@
     </style>
 </head>
 <body>
+<%String user_type = (String)session.getAttribute("user_type"); %>
     <div id="header">
         <div id="hader-top">
             <div class="join">
@@ -156,7 +157,7 @@
                     <a href="join.jsp">회원가입</a>
                 <% } else { %>
                     <!-- 세션에 아이디가 있을 때 -->
-                    <% out.print("<a href='userInfo.jsp'>"+session.getAttribute("nickname")+"</a>님 환영합니다");%>
+                    <% out.print("<a href='userInfoSet.jsp?userId="+session.getAttribute("userId")+"'>"+session.getAttribute("nickname")+"</a>님 환영합니다");%>
                     <a href="logoutProcess.jsp">로그아웃</a>
                 <% } %>
             </div>
@@ -193,14 +194,6 @@
                     </div>
                 </li>
                 <li class="top-menu">
-                    <a href="#">서비스</a>
-                    <div class="menu">
-                        <a>Menu 1</a>
-                        <a>Menu 2</a>
-                        <a>Menu 3</a>
-                    </div>
-                </li>
-                <li class="top-menu">
                     <a href="#">회사소개</a>
                     <div class="menu">
                         <a>Menu 1</a>
@@ -209,13 +202,48 @@
                     </div>
                 </li>
                 <li class="top-menu">
-                    <a href="#">회원관리</a>
-                    <div class="menu">
-                        <a>Menu 1</a>
-                        <a>Menu 2</a>
-                        <a>Menu 3</a>
-                    </div>
-                </li>
+    <%
+        
+        if(user_type != null && user_type.equals("U") || user_type != null && user_type.equals("A")) {
+    %>
+    <a href="user_service.jsp" onclick="return checkUserType()">고객센터</a>
+    <script>
+        function checkUserType() {
+            var user_type = '<%= user_type %>';
+            if (user_type === 'U' || user_type ==='A') {
+                return true; // 유저 타입이 'U'거나 'A'면 링크 이동 허용
+            }
+            else {
+                alert('로그인 후 열람 가능합니다.'); // 경고창 표시
+                return false; // 링크 이동 차단
+            }
+        }
+    </script>
+    <% } else { %>
+    <a href="#" onclick="alert('로그인 후 열람 가능합니다.');">고객센터</a>
+    <% } %>
+    <div class="menu">
+        <a>Menu 1</a>
+        <a>Menu 2</a>
+        <a>Menu 3</a>
+    </div>
+</li>
+                <% 
+        
+        if(user_type != null && user_type.equals("A")) {
+    %>
+    <li class="top-menu">
+        <a href="UserBoard.jsp">회원관리</a>
+        <div class="menu">
+            <a>Menu 1</a>
+            <a>Menu 2</a>
+            <a>Menu 3</a>
+        </div>
+    </li>
+    <% } %>
+                
+                
+                
             </ul>
         </div>
     </div>

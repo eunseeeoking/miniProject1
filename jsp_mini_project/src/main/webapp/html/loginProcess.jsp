@@ -16,18 +16,30 @@
        conn = DriverManager.getConnection(db_url, db_id, db_pw);
 
        // PreparedStatement 사용
-       String query = "SELECT * FROM es_user WHERE user_id = ? AND pwd = ?";
+       String query = "SELECT * FROM es_user WHERE user_id = ?";
        pstmt = conn.prepareStatement(query);
        pstmt.setString(1, id);
-       pstmt.setString(2, password);
-
        ResultSet rs = pstmt.executeQuery();
 
        if (rs.next()) {
-           // 로그인 성공 시 세션에 아이디 저장
-           session.setAttribute("userId", id);
-           session.setAttribute("nickname", rs.getString("nickname"));
-           response.sendRedirect("main.jsp");
+    	   pstmt.close();
+    	   query = "SELECT * FROM es_user WHERE user_id = ? And pwd = ?";
+    	   pstmt = conn.prepareStatement(query);
+    	   pstmt.setString(1, id);
+    	   pstmt.setString(2, password);
+    	   rs = pstmt.executeQuery();
+    	   
+    	   if(rs.next()){
+    		// 로그인 성공 시 세션에 아이디 저장
+               session.setAttribute("userId", id);
+               session.setAttribute("nickname", rs.getString("nickname"));
+               session.setAttribute("user_type", rs.getString("user_type"));
+               response.sendRedirect("main.jsp");
+    		   
+    	   }else{
+    		   out.print("noPWD");
+    	   }
+           
        } else {
            out.print("failure");
        }
