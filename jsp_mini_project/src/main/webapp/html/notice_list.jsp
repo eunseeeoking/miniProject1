@@ -90,7 +90,7 @@
         for (Map<String, Object> notice : noticeList) {
         	String content = (String) notice.get("CONTENT");
             if (content.length() > 50) {
-                content = content.substring(0, 50) + "...";
+                content = content.substring(0, 50) + " ...중략";
             }
     %>
             <div class="card">
