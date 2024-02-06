@@ -31,6 +31,7 @@
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
+             text-align: center;
         }
 
         th {
@@ -107,6 +108,7 @@
     </form>
     
 <form action="userdelete.jsp" method="post" id="deleteForm">
+<input type="button" class="delete-button" value="삭제하기" onclick="deleteSelectedUsers()">
     <table>
         <thead>
             <tr>
@@ -120,6 +122,7 @@
                 <th>주소</th>
                 <th>휴대폰번호</th>
                 <th>로그인 실패</th>
+                <th>유저 등급</th>
                 <th>상세보기</th>
                 
             </tr>
@@ -145,6 +148,7 @@
                     String address = rs.getString("ADDR");
                     String phone = rs.getString("PHONE");
 					String failcnt = rs.getString("failcnt");
+					String type = rs.getString("user_type");
                     // 행 번호 증가
                     rowNumber++;
             %>
@@ -161,6 +165,7 @@
                 <td><%= address %></td>
                 <td><%= phone %></td>
                 <td><%= failcnt %> 회 <input value="초기화" type="button" onclick="failreset('<%=userId%>')"></td>
+                <td><%= type %></td>
                 <td style="text-align: center;"><input type="button" class="view-details-button" value="유저 정보" onclick="viewDetails('<%= userId %>')"></td>
             </tr>
 
@@ -181,7 +186,7 @@
             %>
         </tbody>
     </table>
-     <input type="button" class="delete-button" value="삭제하기" onclick="deleteSelectedUsers()">
+     
     </form>
 
 </body>

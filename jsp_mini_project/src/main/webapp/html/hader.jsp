@@ -18,8 +18,8 @@
         #header {
             width: 100%;
             height: 100px;
-            background-color: rgba(219, 219, 219,0.1);
-            position: absolute;
+            background-color: rgba(7, 7, 7,0.3);
+            position: fixed;
             top: 0;
             left: 0;
             display:block;
@@ -199,7 +199,10 @@
                 <li class="top-menu">
                     <a href="notice_list.jsp">공지사항</a>
                     <div class="menu">
-                        <a>공지 작성</a>
+                    <%if(user_type!=null &&user_type.equals("A")){ 
+                    %><a href="notice_write.jsp">공지 작성</a><%} 
+                    %>
+                        
                         
                     </div>
                 </li>
@@ -211,18 +214,7 @@
     <a href="user_service.jsp" onclick="return checkUserType()">고객센터</a>
     <div class="menu">
         <a href="user_service_write.jsp" onclick="return checkUserType()">문의 남기기</a>
-    <script>
-        function checkUserType() {
-            var user_type = '<%= user_type %>';
-            if (user_type === 'U' || user_type ==='A') {
-                return true; // 유저 타입이 'U'거나 'A'면 링크 이동 허용
-            }
-            else {
-                alert('로그인 후 열람 가능합니다.'); // 경고창 표시
-                return false; // 링크 이동 차단
-            }
-        }
-    </script>
+    
     <% } else { %>
     <a href="#" onclick="alert('로그인 후 열람 가능합니다.');">고객센터</a>
     <div class="menu">
@@ -261,4 +253,17 @@
         });
     });
 </script>
+
+<script>
+        function checkUserType() {
+            var user_type = '<%= user_type %>';
+            if (user_type === 'U' || user_type ==='A') {
+                return true; // 유저 타입이 'U'거나 'A'면 링크 이동 허용
+            }
+            else {
+                alert('로그인 후 열람 가능합니다.'); // 경고창 표시
+                return false; // 링크 이동 차단
+            }
+        }
+    </script>
 </html>

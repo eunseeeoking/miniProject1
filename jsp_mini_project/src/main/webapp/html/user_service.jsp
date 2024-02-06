@@ -10,18 +10,17 @@
 <%@ include file="dbconn.jsp" %>
 
 <style>
-        <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
-            margin: 0px;
-            padding: 0;
+            margin: 0;
         }
 
         #headerbox {
             width: 100%;
             height: 100px;
             background-color: black;
+            
         }
 
         h2 {
@@ -46,6 +45,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: center;
         }
 
         th {
@@ -82,17 +82,14 @@
         input[type="button"]:hover {
             background-color: #1565C0;
         }
-        #headerbox{
-        	width: 100%;
-        	height: 100px;
-        	background-color:black; 
-        }
+       
         #deletebtn , #updateStatusBtn{
         	text-align: center;
         }
     </style>
+    <%@ include file="hader.jsp" %>
 <body>
-<jsp:include page="hader.jsp" flush="true"></jsp:include>
+
 
     <div id="headerbox"></div>
     <h2>문의 목록</h2>
@@ -110,7 +107,7 @@
         try {
             String sql = "SELECT POST_ID, S.NICKNAME, S.USER_ID, S.INQUIRY_TYPE, S.TITLE, S.POST_DATE, S.STATUS, USER_TYPE FROM ES_SERVICE S INNER JOIN ES_USER U ON S.USER_ID = U.USER_ID ORDER BY POST_ID ASC";
             rs = stmt.executeQuery(sql);
-            String user_type = (String) session.getAttribute("user_type");
+            user_type = (String) session.getAttribute("user_type");
             String userId = (String) session.getAttribute("userId");
            %>
 
@@ -124,6 +121,7 @@
                 <th>작성일</th>
                 <th>처리상태</th>
                 <th>삭제하기</th>
+                <th>수정하기</th>
                 <%if (user_type.equals("A")){ %>
                 <th>답변제출</th> <!-- 버튼을 위한 열 추가 -->
                 <%}%>
@@ -156,6 +154,7 @@
         <td><%= createDate %></td>
         <td><%= status %></td>
         <td id="deletebtn"><input type="button" value="삭제하기" onclick="servicedelete('<%=postId %>')" id="servicedelete"></td>
+        <td><input type="button" value="수정하기" onclick="rewrite('<%=postId %>')"></td>
             <%
                 // 사용자 유형이 'A'이면서 게시글 상태가 '처리전'일 때 버튼 표시
                 if (user_type.equals("A") && status.equals("처리전")) {
@@ -192,6 +191,10 @@
 </body>
 </html>
 <script>
+	function rewrite(postId){
+		window.location.href = "user_service_rewrite.jsp?postId="+postId;
+	}
+
     function goToWritePage() {
         window.location.href = "user_service_write.jsp";
     }
