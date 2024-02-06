@@ -116,7 +116,6 @@
     }
 %>
 </div>
-
 <!-- Bootstrap JS and dependencies (Add at the end of the document) -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -127,7 +126,7 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
+<%@ include file="footer.jsp" %>
 <script>
 	function notice_write() {
 		location.href="notice_write.jsp";
@@ -139,3 +138,4 @@
 		
 	}
 </script>
+

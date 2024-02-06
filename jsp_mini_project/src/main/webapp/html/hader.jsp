@@ -169,7 +169,7 @@
             <div id="logo"><a href="main.jsp">customer care WEB😋 </a></div>
             <ul>
                 <li class="top-menu">
-                    <a href="#">주문관리</a>
+                    <a href="esteregg.jsp">주문관리</a>
                     <div class="menu">
                         <div class="sub-top-menu">
                             <a>메뉴를</a>

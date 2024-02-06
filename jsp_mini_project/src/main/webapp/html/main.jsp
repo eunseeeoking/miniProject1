@@ -55,4 +55,6 @@
     <!-- jQuery 1.12.4 버전 사용 -->
     
 </body>
+<%@ include file="footer.jsp" %>
 </html>
+

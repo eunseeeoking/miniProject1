@@ -189,6 +189,7 @@
 
 
 </body>
+<%@ include file="footer.jsp" %>
 </html>
 <script>
 	function rewrite(postId){
