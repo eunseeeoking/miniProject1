@@ -160,7 +160,7 @@
                 <td><%= nickname %></td>
                 <td><%= address %></td>
                 <td><%= phone %></td>
-                <td><%= failcnt %><input value="초기화" type="button" onclick="failreset('<%=userId%>')"></td>
+                <td><%= failcnt %> 회 <input value="초기화" type="button" onclick="failreset('<%=userId%>')"></td>
                 <td style="text-align: center;"><input type="button" class="view-details-button" value="유저 정보" onclick="viewDetails('<%= userId %>')"></td>
             </tr>
 

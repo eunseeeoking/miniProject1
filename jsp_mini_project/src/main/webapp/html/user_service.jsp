@@ -87,6 +87,9 @@
         	height: 100px;
         	background-color:black; 
         }
+        #deletebtn , #updateStatusBtn{
+        	text-align: center;
+        }
     </style>
 <body>
 <jsp:include page="hader.jsp" flush="true"></jsp:include>
@@ -120,8 +123,9 @@
                 <th>제목</th>
                 <th>작성일</th>
                 <th>처리상태</th>
+                <th>삭제하기</th>
                 <%if (user_type.equals("A")){ %>
-                <th>조작</th> <!-- 버튼을 위한 열 추가 -->
+                <th>답변제출</th> <!-- 버튼을 위한 열 추가 -->
                 <%}%>
             </tr>
         </thead>
@@ -151,17 +155,18 @@
         </td>
         <td><%= createDate %></td>
         <td><%= status %></td>
-        
+        <td id="deletebtn"><input type="button" value="삭제하기" onclick="servicedelete('<%=postId %>')" id="servicedelete"></td>
             <%
                 // 사용자 유형이 'A'이면서 게시글 상태가 '처리전'일 때 버튼 표시
                 if (user_type.equals("A") && status.equals("처리전")) {
             %>
-            <td>
-            <input type="button" value="처리 완료" onclick="updateStatus('<%= postId %>')">
+            <td id="updateStatusBtn">
+            <input type="button" value="답변 제출" onclick="updateStatus('<%= postId %>')">
             </td> 
             <%
                 }
             %>
+            
        
     </tr>
             <%
@@ -202,6 +207,16 @@
             }
         });
     }
+    function servicedelete(postId) {
+    	if(confirm("정말 삭제 하시겠습니까?")){
+    		
+    		location.href="service_delete.jsp?postId="+postId;
+    	}else{
+    		return;
+    	}
+		
+	}
+    
 
     function showAll() {
         var rows = document.querySelectorAll('.post-row');
@@ -210,7 +225,7 @@
         });
     }
     function updateStatus(postId) {
-        location.href="updateStatus.jsp?postId="+postId;
-        alert("처리 상태가 업데이트되었습니다.");
+        location.href="admin_coment.jsp?postId="+postId;
+
     }
 </script>

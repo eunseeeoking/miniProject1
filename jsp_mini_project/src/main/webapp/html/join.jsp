@@ -40,6 +40,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         border: 1px solid;
+        
     }
     
     .userName {
@@ -90,10 +91,12 @@
     
     #userBirth {
         display: none;
+        
     }
     
     #userIdInfo {
         display: none;
+        
         line-height: 80px;
     }
     
@@ -312,8 +315,14 @@
         blocks.forEach(function (block) {
           if (block.id === blockId) {
             block.style.display = 'block';
+            block.style.transition = 'opacity 500ms'; // 또는 다른 속성을 지정할 수 있습니다
+            block.style.opacity = 1; // 원하는 초기 상태값 설정
           } else {
-            block.style.display = 'none';
+        	  block.style.transition = 'opacity 500ms'; // 또는 다른 속성을 지정할 수 있습니다.
+              block.style.opacity = 0; // 원하는 초기 상태값 설정
+              setTimeout(function () {
+                block.style.display = 'none';
+              }, 500); // transition 시간과 동일하게 설정
           }
         });
       }

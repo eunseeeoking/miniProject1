@@ -108,7 +108,7 @@
             text-decoration: none;
         }
         .menu, .sub-menu{
-            background-color: rgba(219, 219, 219,0.1);
+            background-color: rgba(7, 7, 7,0.5);
             width: 150px;
             box-shadow: 1px 3px 8px 3px #e7e3e3;
             display: none;
@@ -172,36 +172,35 @@
                     <a href="#">주문관리</a>
                     <div class="menu">
                         <div class="sub-top-menu">
-                            <a>Menu 1</a>
+                            <a>메뉴를</a>
                             <div class="sub-menu">
-                                <a>Sub 1</a>
-                                <a>Sub 2</a>
+                                <a>많이</a>
+                                <a>슬프네요</a>
                             </div>
                         </div>
                         <div class="sub-top-menu">
-                            <a>Menu 2</a>
+                            <a>만들었지만</a>
                             <div class="sub-menu">
-                                <a>Sub 1</a>
-                                <a>Sub 2</a>
-                                <a>Sub 3</a>
+                                <a>다양한</a>
+                                <a>구현을</a>
+                                <a>하고싶지만</a>
                             </div>
                         </div>
                         <div class="sub-top-menu">
-                            <a>Menu 3</a>
+                            <a>쓸대가없어</a>
                             <div class="sub-menu">
-                                <a>Sub 1</a>
-                                <a>Sub 2</a>
-                                <a>Sub 3</a>
+                                <a>시간이</a>
+                                <a>모자란걸</a>
+                                <a>어쩌겠어</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="top-menu">
-                    <a href="#">회사소개</a>
+                    <a href="notice_list.jsp">공지사항</a>
                     <div class="menu">
-                        <a>Menu 1</a>
-                        <a>Menu 2</a>
-                        <a>Menu 3</a>
+                        <a>공지 작성</a>
+                        
                     </div>
                 </li>
                 <li class="top-menu">
@@ -230,8 +229,6 @@
         <a href="#" onclick="alert('로그인 후 작성 가능합니다.')">문의 남기기</a>
     <% } %>
     
-        <a>Menu 2</a>
-        <a>Menu 3</a>
     </div>
 </li>
                 <% 
@@ -241,9 +238,7 @@
     <li class="top-menu">
         <a href="UserBoard.jsp">회원관리</a>
         <div class="menu">
-            <a>Menu 1</a>
-            <a>Menu 2</a>
-            <a>Menu 3</a>
+            
         </div>
     </li>
     <% } %>
